@@ -432,6 +432,7 @@ Handles tramp paths sensibly."
   (when terminal-here-verbose
     (message "Running `%s` with default-directory `%s`" (string-join command " ") dir))
   (let* ((default-directory dir)
+         (process-environment nil)
          (process-name (car command))
          (proc (apply #'start-process process-name nil command)))
     (set-process-sentinel
